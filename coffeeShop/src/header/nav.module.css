@@ -1,0 +1,112 @@
+:root{
+    --main-text:#DDCCB9;
+    --hover-color:#A36B37;
+
+}
+
+
+.header {
+  width: auto;
+  height: 13%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  border-radius: 10px;
+  margin: 1rem;
+  margin-top: 0;
+  background-color: #18120e; 
+  padding: 0.5rem;
+  gap: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-top: 0.5px solid rgba(245, 245, 245, 0.5);
+  border-inline: 0.5px solid rgba(245, 245, 245, 0.5);
+}
+
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+}
+
+.brand h1 {
+  font-size: clamp(0.5rem, 2vw, 1.5rem);
+  color: var(--main-text);
+  line-height: 0.9;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-text);
+  font-size: clamp(2rem, 4vw, 8rem);
+  margin-bottom: 5%;
+}
+
+.brandName {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 50%;
+}
+
+.nav {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.header li {
+  list-style: none;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: clamp(0.5rem, 2vw, 3rem);
+}
+
+li:hover{
+  color:var(--hover-color);
+  cursor: pointer;
+
+}
+
+.header ul {
+  width: auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+  color: var(--main-text);
+}
+
+.cart {
+  width: 20%;
+  height: 100%;
+  color: var(--main-text);
+  font-size: clamp(1.5rem, 4vw, 4.5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 550px) {
+  .nav {
+    display: none;
+  }
+}
+

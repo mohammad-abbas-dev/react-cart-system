@@ -1,0 +1,182 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.popUp {
+  width: 75%;
+  height: 75%;
+  background-color: #1a1816;
+  position: fixed;
+  inset: 0;
+  left: 12.5%;
+  top: 12.5%;
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.popUpBg {
+  width: 100%;
+  height: 100%;
+  background-color: #221c19a7;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popUp .close {
+  width: max(5%,2.5rem);
+  height: max(5%,2.5rem);
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding-left:0.5rem;
+  padding-top:0.5rem;
+  font-size: clamp(1rem, 2vw, 2.5rem);
+
+}
+
+.mainContainer {
+  width: 100%;
+  height: 75%;
+  overflow-y: auto;
+  scrollbar-width:thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap:0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.item {
+  width: 70%;
+  height: 33%;
+  border: 1.5px var(--hover-color) solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.side1 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 1rem;
+}
+.side2 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.item .description {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: var(--main-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popUp h2 {
+  font-size: clamp(0.5rem, 3vw, 3rem);
+}
+
+.description img {
+  width: 50%;
+  height: 88%;
+}
+
+.popUp h3 {
+  color: var(--main-text);
+  font-size: clamp(0.75rem, 3vw, 2rem);
+}
+
+.pricing {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.options {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.item .amount {
+  width: min(5rem, 80%);
+  min-width: 12px;
+  height: 100%;
+  border: 1px solid whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item .amount input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: clamp(0.75rem, 2vw, 2rem);
+  color: var(--main-text);
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item .add,
+.item .subtract {
+  color: whitesmoke;
+  font-size: clamp(1rem, 2vw, 3rem);
+}
+
+.item .bin {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: var(--main-text);
+  font-size: clamp(1rem, 2vw, 3rem);
+  padding-top: 1rem;
+  cursor: pointer;
+}
+
+.total {
+  width: 100%;
+  height: 20%;
+  border: 1px solid whitesmoke;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--main-text);
+  border-radius: 10px;
+}
+
+.total h2 {
+  font-size: clamp(1rem, 3vw, 3rem);
+}
