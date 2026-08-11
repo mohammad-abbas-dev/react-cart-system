@@ -1,16 +1,26 @@
-import style from "./cardEdit.module.css";
+import style from "./cartWindow.module.css";
 import shake1 from "../assets/shake1.png";
 import { BiTrash } from "react-icons/bi";
 import { RxCross1 } from "react-icons/rx";
-import { useState } from "react";
+import { useState,createContext, useContext } from "react";
+import Add from '../addButton/add.jsx'
+ 
+import { clickedCartContext } from "../header/nav.jsx";
 
-function CardEdit() {
-  let [itemsList, setItemsList] = useState([1,2,3]);
+
+function CartWindow({closeCart}) {
+
+  let [itemsList, setItemsList] = useState([1]);
+  let cartWindow=useContext(clickedCartContext)
+
+  console.log(clickedCartContext)
+
 
   return (
     <>
-      <div className={style.popUp}>
-        <div className={style.close}>
+      <div className={cartWindow ? style.popUp : style.hidden}>
+
+        <div onClick={closeCart} className={style.close}>
           <RxCross1 />
         </div>
         <div className={style.mainContainer}>
@@ -46,9 +56,12 @@ function CardEdit() {
           <h3>10$</h3>
         </div>
       </div>
-      <div className={style.popUp ? style.popUpBg : ""}></div>
+      <div className={cartWindow ? style.popUpBg : style.hidden}></div>
+
+     
     </>
   );
+
 }
 
-export default CardEdit;
+export default CartWindow;

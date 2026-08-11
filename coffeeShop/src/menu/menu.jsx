@@ -1,6 +1,6 @@
 import style from "./menu.module.css";
 import { BiSolidCoffeeBean } from "react-icons/bi";
-import Card from '../card/card.jsx'
+import Card from '../itemCard/card.jsx'
 import Add from '../addButton/add.jsx'
 function Menu() {
   return (
@@ -20,7 +20,7 @@ function Menu() {
 
         {/* ............................................cards right here */}
         <div className={style.cardsContainer}>
-          <Add/>
+        <Add/>
         <Card/>
         </div>
         
