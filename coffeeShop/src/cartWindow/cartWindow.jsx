@@ -2,19 +2,21 @@ import style from "./cartWindow.module.css";
 import shake1 from "../assets/shake1.png";
 import { BiTrash } from "react-icons/bi";
 import { RxCross1 } from "react-icons/rx";
-import { useState,createContext, useContext } from "react";
+import { useState,createContext, useContext, useEffect } from "react";
 import Add from '../addButton/add.jsx'
- 
+
+ import { CartItems } from "../itemCard/card.jsx";
+
 import { clickedCartContext } from "../header/nav.jsx";
 
 
 function CartWindow({closeCart}) {
 
-  let [itemsList, setItemsList] = useState([1]);
-  let cartWindow=useContext(clickedCartContext)
+  let itemsList= useContext(CartItems);
 
-  console.log(clickedCartContext)
-
+  let cartWindow=useContext(clickedCartContext);
+ 
+  console.log(itemsList)
 
   return (
     <>
@@ -24,18 +26,18 @@ function CartWindow({closeCart}) {
           <RxCross1 />
         </div>
         <div className={style.mainContainer}>
-          {itemsList.map((item) => (
-            <div className={style.item}>
+          {itemsList.map((items) => (
+            <div key={items.id} className={style.item}>
               <div className={style.side1}>
                 <div className={style.description}>
-                  <img src={shake1} alt="strawberry Shake" />
-                  <h2>StrawBerry Shake</h2>
+                  <img src={items.img} alt="strawberry Shake" />
+                  <h2>{items.title}</h2>
                 </div>
               </div>
 
               <div className={style.side2}>
                 <div className={style.pricing}>
-                  <h3>10$</h3>
+                  <h3>{items.price}</h3>
                   <div className={style.options}>
                     <div className={style.add}>+</div>{" "}
                     <div className={style.amount}>

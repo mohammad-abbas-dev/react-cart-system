@@ -8,7 +8,7 @@
 
 .menu {
   width: 100%;
-  height: auto;
+  height: 90%;
   padding-left: 2rem;
   font-family: roboto;
 }
@@ -59,7 +59,7 @@ p {
 
 .cardsContainer {
   width: 100%;
-  height: auto;
+  height:90%;
   display: flex;
   align-items: center;
   justify-content: flex-start;

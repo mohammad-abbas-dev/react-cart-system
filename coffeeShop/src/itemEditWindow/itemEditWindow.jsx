@@ -2,6 +2,7 @@ import style from "./itemEditWindow.module.css";
 import { useState, useContext, createContext } from "react";
 import { editWindowContext } from "../addButton/add.jsx";
 import Card from "../itemCard/card.jsx";
+import CartWindow from "../cartWindow/cartWindow.jsx";
 export let cardsContext = createContext([]);
 export let amountOfCards = createContext([]);
 
@@ -9,9 +10,10 @@ function EditWindow({ closeWindow }) {
   let editWindow = useContext(editWindowContext);
 
   let [id, setId] = useState(0);
+  let [img, setImg] = useState("");
   let [title, setTitle] = useState("");
   let [description, setDescription] = useState("");
-  let [price, setPrice] = useState(0);
+  let [price, setPrice] = useState("");
 
   let [cardsInfo, setCardsInfo] = useState([]);
 
@@ -29,17 +31,39 @@ function EditWindow({ closeWindow }) {
     setPrice(e.target.value);
   }
 
+  let reader = new FileReader();
+  function handleImgUrl(e) {
+    let image = e.target.files[0];
+
+    reader.onload = function () {
+      console.log(reader.result);
+       setImg(reader.result);
+    };
+
+    reader.readAsDataURL(image);
+   
+
+  }
+
+  
+
   function handleAddingItems() {
     setId(id + 1);
     setCardsInfo((c) => [
       ...c,
       {
         id: id,
+        img: img,
         title: title,
         description: description,
         price: price,
       },
     ]);
+
+    setImg("");
+    setTitle("");
+    setPrice("");
+    setDescription("");
   }
 
   return (
@@ -50,29 +74,52 @@ function EditWindow({ closeWindow }) {
         </div>
         <div className={style.container}>
           <h3>Title:</h3>
-          <input onChange={handleTitle} className={style.title} type="text" />
+          <input
+            onChange={handleTitle}
+            value={title}
+            className={style.title}
+            type="text"
+          />
+
+          <h3>Image:</h3>
+          <input
+            onChange={handleImgUrl}
+            className={style.image}
+            type="file"
+          />
+
           <h3>Description:</h3>
           <input
             onChange={handleDescription}
             className={style.description}
+            value={description}
             type="text"
           />
           <h3>Price:</h3>
-          <input onChange={handlePrice} className={style.price} type="number" />
+          <input
+            onChange={handlePrice}
+            className={style.price}
+            value={price}
+            type="number"
+          />
 
-          <button onClick={handleAddingItems}>Add Item</button>
+          <button
+            onClick={() => {
+              (handleAddingItems(), closeWindow());
+            }}
+          >
+            Add Item
+          </button>
         </div>
       </div>
-
       <div className={editWindow ? style.popUpBg : style.hidden}></div>
-
-        <cardsContext.Provider key={cardsInfo.id} value={cardsInfo}>
-          <amountOfCards.Provider value={cardsAmount}>
-            <Card style={{ display: "none" }} />
-            
-          </amountOfCards.Provider>
-        </cardsContext.Provider>;
-    
+      <cardsContext.Provider key={cardsInfo.id} value={cardsInfo}>
+        <amountOfCards.Provider value={cardsAmount}>
+          <Card style={{ display: "none" }} />
+          <CartWindow style={{ display: "none" }} />
+        </amountOfCards.Provider>
+      </cardsContext.Provider>
+      ;
     </>
   );
 }
