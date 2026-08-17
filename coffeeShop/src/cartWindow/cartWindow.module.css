@@ -102,6 +102,7 @@
 
 .description img {
   width: 75%;
+  min-width:32px;
   height: 88%;
   transform: translateX(-10%);
 }
