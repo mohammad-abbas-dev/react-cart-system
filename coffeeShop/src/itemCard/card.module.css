@@ -6,7 +6,11 @@
 }
 
 .card {
+<<<<<<< HEAD
    width: clamp(15rem, 25vw, 25rem);
+=======
+  width: max(300px,22%);
+>>>>>>> 37ff9aa14c5ac892b623b466e5df4b5679642226
   height: 90%;
   display: flex;
   align-items: center;
