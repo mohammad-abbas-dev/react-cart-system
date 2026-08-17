@@ -6,7 +6,7 @@
 }
 
 .card {
-  width: 17%;
+  width: min(300px,22%);
   height: 90%;
   display: flex;
   align-items: center;
