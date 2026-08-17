@@ -13,7 +13,8 @@ function EditWindow({ closeWindow }) {
   let [img, setImg] = useState("");
   let [title, setTitle] = useState("");
   let [description, setDescription] = useState("");
-  let [price, setPrice] = useState("");
+  let [price, setPrice] = useState(0);
+  let [amount, setAmount] = useState(1);
 
   let [cardsInfo, setCardsInfo] = useState([]);
 
@@ -41,8 +42,7 @@ function EditWindow({ closeWindow }) {
     };
 
     reader.readAsDataURL(image);
-   
-
+    
   }
 
   
@@ -57,13 +57,15 @@ function EditWindow({ closeWindow }) {
         title: title,
         description: description,
         price: price,
+        amount:amount
       },
     ]);
-
+    
     setImg("");
     setTitle("");
-    setPrice("");
+    setPrice(0);
     setDescription("");
+    setAmount(1);
   }
 
   return (
@@ -115,8 +117,8 @@ function EditWindow({ closeWindow }) {
       <div className={editWindow ? style.popUpBg : style.hidden}></div>
       <cardsContext.Provider key={cardsInfo.id} value={cardsInfo}>
         <amountOfCards.Provider value={cardsAmount}>
-          <Card style={{ display: "none" }} />
-          <CartWindow style={{ display: "none" }} />
+          <Card items={""} style={{ display: "none" }} />
+          {/* <CartWindow style={{ display: "none" }} /> */}
         </amountOfCards.Provider>
       </cardsContext.Provider>
       ;

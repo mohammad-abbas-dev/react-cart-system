@@ -3,19 +3,22 @@ import { BiCart, BiStar } from "react-icons/bi";
 import { useState, useContext, createContext } from "react";
 import { cardsContext, amountOfCards } from "../itemEditWindow/itemEditWindow";
 import CartWindow from "../cartWindow/cartWindow";
-export let CartItems=createContext([])
-function Card() {
+import { setItemsInCartContext } from "../App";
+export let CartItems = createContext([]);
+
+function Card({ items }) {
   let cardsList = useContext(amountOfCards);
   let cardsInfo = useContext(cardsContext);
 
-  let [itemsInCart, setItemsInCart] = useState([]);
+  let itemsInCart = useContext(setItemsInCartContext);
 
   function handleItemsInCart(card) {
-    if(!itemsInCart.includes(card)){
-    setItemsInCart((i) => [...i, card]);
-    }
+    itemsInCart((prevCart) =>
+      prevCart.some((item) => item.id === card.id)
+        ? prevCart
+        : [...prevCart, card],
+    );
   }
-
 
 
   return (
@@ -37,7 +40,10 @@ function Card() {
             <p>{card.description}</p>
             <div className={style.options}>
               <div className={style.pricing}>{card.price}$</div>
-              <div className={style.cartBtn} onClick={()=>handleItemsInCart(card)}>
+              <div
+                className={style.cartBtn}
+                onClick={() => handleItemsInCart(card)}
+              >
                 {" "}
                 <BiCart /> <span>Add To Cart</span>
               </div>
@@ -45,9 +51,6 @@ function Card() {
           </div>
         </div>
       ))}
-      <CartItems.Provider value={itemsInCart}>
-        <CartWindow style={{display:"none"}}/>
-      </CartItems.Provider>
     </>
   );
 }

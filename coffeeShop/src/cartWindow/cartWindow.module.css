@@ -66,6 +66,7 @@
   width: 70%;
   height: 33%;
   border: 1.5px var(--hover-color) solid;
+  background-color: #844f1e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,7 +97,8 @@
 }
 
 .popUp h2 {
-  font-size: clamp(0.5rem, 3vw, 3rem);
+  font-size: clamp(0.5rem, 3vw, 2rem);
+  padding-left:0.3rem;
 }
 
 .description img {
@@ -137,7 +139,7 @@
   align-items: center;
 }
 
-.item .amount input {
+.item .amount span {
   width: 100%;
   height: 100%;
   border: none;
@@ -152,6 +154,7 @@
 .item .subtract {
   color: whitesmoke;
   font-size: clamp(1rem, 2vw, 3rem);
+  cursor: pointer;
 }
 
 .item .bin {

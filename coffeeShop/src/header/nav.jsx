@@ -4,13 +4,14 @@ import style from "./nav.module.css";
 import coffeeLogo from "../assets/main-logo.png";
 import { createContext, useState,useContext } from "react";
 import CartWindow from "../cartWindow/cartWindow.jsx";
-export const clickedCartContext = createContext();
+import { setCartStatueContext } from "../App.jsx";
 
 function Header() {
-  let [clickedCart, setClickedCart] = useState(false);
+
+  let setCartStatue = useContext(setCartStatueContext)
 
   function showCart() {
-    setClickedCart(true);
+    setCartStatue(true);
   }
 
  
@@ -41,9 +42,7 @@ function Header() {
           <BiCart />
         </div>
       </div>
-      <clickedCartContext.Provider value={clickedCart}>
-      {clickedCart &&  <CartWindow closeCart={()=>setClickedCart(false)} />}
-      </clickedCartContext.Provider>
+    
     </>
   );
 }
