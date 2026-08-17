@@ -15,7 +15,7 @@ function App() {
       <setCartStatueContext.Provider value={setCartStatue}>
         <setItemsInCartContext.Provider value={setItemsInCart}>
           <Header />
-          <Menu items={itemsInCart}/>
+          <Menu items={itemsInCart} />
           <EditWindow />
           <CartWindow
             isOpen={cartStatue}

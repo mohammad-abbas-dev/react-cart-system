@@ -1,9 +1,7 @@
-:root{
-    --main-text:#DDCCB9;
-    --hover-color:#A36B37;
-
+:root {
+  --main-text: #ddccb9;
+  --hover-color: #a36b37;
 }
-
 
 .header {
   width: auto;
@@ -14,7 +12,7 @@
   border-radius: 10px;
   margin: 1rem;
   margin-top: 0;
-  background-color: #18120e; 
+  background-color: #18120e;
   padding: 0.5rem;
   gap: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -78,10 +76,9 @@
   font-size: clamp(0.5rem, 2vw, 3rem);
 }
 
-li:hover{
-  color:var(--hover-color);
+li:hover {
+  color: var(--hover-color);
   cursor: pointer;
-
 }
 
 .header ul {
@@ -110,4 +107,3 @@ li:hover{
     display: none;
   }
 }
-

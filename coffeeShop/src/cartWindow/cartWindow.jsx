@@ -26,14 +26,13 @@ function CartWindow({ isOpen, closeCart, items }) {
   }
 
   function handleMinus(id) {
-    if(items[id].amount>1){
+    if (items[id].amount > 1) {
       const itemsCopy = [...items];
 
-    itemsCopy[id] = { ...itemsCopy[id], amount: itemsCopy[id].amount - 1 };
+      itemsCopy[id] = { ...itemsCopy[id], amount: itemsCopy[id].amount - 1 };
 
-    setItems(itemsCopy);
+      setItems(itemsCopy);
     }
-    
   }
 
   function handleTotalPrice() {
@@ -47,6 +46,11 @@ function CartWindow({ isOpen, closeCart, items }) {
   useEffect(() => {
     handleTotalPrice();
   }, [items]);
+
+  function handleRemoving(title) {
+    setItems(items.filter((item) => item.title !== title));
+    console.log(title);
+  }
 
   return (
     <>
@@ -70,7 +74,7 @@ function CartWindow({ isOpen, closeCart, items }) {
 
               <div className={style.side2}>
                 <div className={style.pricing}>
-                  <h3>{items.price * items.amount}$</h3>
+                  <h3>{(items.price * items.amount).toFixed(2)}$</h3>
                   <div className={style.options}>
                     <div onClick={() => handlePlus(id)} className={style.add}>
                       +
@@ -86,7 +90,10 @@ function CartWindow({ isOpen, closeCart, items }) {
                     </div>
                   </div>
                 </div>
-                <div className={style.bin}>
+                <div
+                  onClick={() => handleRemoving(items.title)}
+                  className={style.bin}
+                >
                   <BiTrash />
                 </div>
               </div>
@@ -95,7 +102,7 @@ function CartWindow({ isOpen, closeCart, items }) {
         </div>
         <div className={style.total}>
           <h2>Total:</h2>
-          <h3>{totalPrice}$</h3>
+          <h3>{totalPrice.toFixed(2)}$</h3>
         </div>
       </div>
       <div className={isOpen ? style.popUpBg : style.hidden}></div>

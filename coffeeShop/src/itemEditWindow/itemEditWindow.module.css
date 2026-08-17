@@ -46,8 +46,8 @@
   padding-top: 0.5rem;
   font-size: clamp(1rem, 2vw, 2.5rem);
   display: relative;
-  right:0;
-  top:0;
+  right: 0;
+  top: 0;
 }
 
 .container {
@@ -70,7 +70,6 @@
   border-radius: 7px;
   font-size: clamp(0.5rem, 2vw, 3rem);
   padding-left: 0.5rem;
-
 }
 
 h3 {
@@ -88,11 +87,11 @@ button {
   font-size: clamp(0.5rem, 2vw, 3rem);
 }
 
-.image{
+.image {
   background-color: transparent;
-  color:var(--main-text);
+  color: var(--main-text);
 }
 
-.hidden{
-    display:none;
+.hidden {
+  display: none;
 }

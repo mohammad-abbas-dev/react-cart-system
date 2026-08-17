@@ -20,7 +20,6 @@ function Card({ items }) {
     );
   }
 
-
   return (
     <>
       {cardsInfo.map((card) => (

@@ -2,19 +2,16 @@ import { BiCoffee } from "react-icons/bi";
 import { BiCart } from "react-icons/bi";
 import style from "./nav.module.css";
 import coffeeLogo from "../assets/main-logo.png";
-import { createContext, useState,useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import CartWindow from "../cartWindow/cartWindow.jsx";
 import { setCartStatueContext } from "../App.jsx";
 
 function Header() {
-
-  let setCartStatue = useContext(setCartStatueContext)
+  let setCartStatue = useContext(setCartStatueContext);
 
   function showCart() {
     setCartStatue(true);
   }
-
- 
 
   return (
     <>
@@ -42,7 +39,6 @@ function Header() {
           <BiCart />
         </div>
       </div>
-    
     </>
   );
 }

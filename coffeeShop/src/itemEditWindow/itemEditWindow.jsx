@@ -13,7 +13,7 @@ function EditWindow({ closeWindow }) {
   let [img, setImg] = useState("");
   let [title, setTitle] = useState("");
   let [description, setDescription] = useState("");
-  let [price, setPrice] = useState(0);
+  let [price, setPrice] = useState(null);
   let [amount, setAmount] = useState(1);
 
   let [cardsInfo, setCardsInfo] = useState([]);
@@ -32,22 +32,32 @@ function EditWindow({ closeWindow }) {
     setPrice(e.target.value);
   }
 
+  let [imgSelected, setImgSelected] = useState(false);
+
   let reader = new FileReader();
   function handleImgUrl(e) {
     let image = e.target.files[0];
 
     reader.onload = function () {
       console.log(reader.result);
-       setImg(reader.result);
+      setImg(reader.result);
     };
 
     reader.readAsDataURL(image);
-    
+    setImgSelected(true);
   }
 
-  
-
   function handleAddingItems() {
+    if (
+      img == "" ||
+      title.trim() == "" ||
+      description.trim() == "" ||
+      price.trim() == ""
+    ) {
+      alert("Something Is Missing");
+      return;
+    }
+
     setId(id + 1);
     setCardsInfo((c) => [
       ...c,
@@ -57,15 +67,16 @@ function EditWindow({ closeWindow }) {
         title: title,
         description: description,
         price: price,
-        amount:amount
+        amount: amount,
       },
     ]);
-    
+
     setImg("");
     setTitle("");
-    setPrice(0);
+    setPrice("");
     setDescription("");
     setAmount(1);
+    setImgSelected(false);
   }
 
   return (
@@ -86,6 +97,7 @@ function EditWindow({ closeWindow }) {
           <h3>Image:</h3>
           <input
             onChange={handleImgUrl}
+            value={imgSelected ? img.value : ""}
             className={style.image}
             type="file"
           />
@@ -118,7 +130,6 @@ function EditWindow({ closeWindow }) {
       <cardsContext.Provider key={cardsInfo.id} value={cardsInfo}>
         <amountOfCards.Provider value={cardsAmount}>
           <Card items={""} style={{ display: "none" }} />
-          {/* <CartWindow style={{ display: "none" }} /> */}
         </amountOfCards.Provider>
       </cardsContext.Provider>
       ;
